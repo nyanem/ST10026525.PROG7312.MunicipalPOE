@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST10026525.PROG7312.MunicipalPOE", "ST10026525.PROG7312.MunicipalPOE\ST10026525.PROG7312.MunicipalPOE.csproj", "{AF5A39FB-997A-427A-8EF0-841CEDBA677E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF5A39FB-997A-427A-8EF0-841CEDBA677E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5A39FB-997A-427A-8EF0-841CEDBA677E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5A39FB-997A-427A-8EF0-841CEDBA677E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5A39FB-997A-427A-8EF0-841CEDBA677E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {215D62A5-17A9-4711-B576-AD9167321248}
+	EndGlobalSection
+EndGlobal

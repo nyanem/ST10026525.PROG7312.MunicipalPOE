@@ -1,0 +1,53 @@
+﻿@model ST10026525.PROG7312.MunicipalPOE.Models.Event
+
+@{
+    ViewData["Title"] = "Create Event";
+    ViewData["BodyClass"] = "admin-page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+
+<div class="admin-wrapper py-5">
+    <div class="container">
+        <h1 class="text-center text-white mb-4">Create New Event</h1>
+
+        <div class="card p-4 mx-auto" style="max-width:600px; background: rgba(0,0,0,0.6); border-radius: 12px;">
+            <form asp-action="CreateEvent" method="post">
+                <div class="mb-3">
+                    <label class="form-label text-white">Title</label>
+                    <input asp-for="Title" class="form-control" style="background: rgba(255,255,255,0.1); color: #fff;" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Category</label>
+                    <input asp-for="Category" class="form-control" style="background: rgba(255,255,255,0.1); color: #fff;" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Date</label>
+                    <input asp-for="Date" type="date" class="form-control" style="background: rgba(255,255,255,0.1); color: #fff;" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Location</label>
+                    <input asp-for="Location" class="form-control" style="background: rgba(255,255,255,0.1); color: #fff;" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4" style="background: rgba(255,255,255,0.1); color: #fff;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-gold w-100">Create Event</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿@model List<ST10026525.PROG7312.MunicipalPOE.Models.Event>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" />
+}
+<div class="admin-dashboard-wrapper">
+    <h2>Admin Dashboard</h2>
+    <a href="@Url.Action("CreateEvent")" class="btn btn-success mb-3">Add Event</a>
+
+    <table class="table table-solid">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.Title</td>
+                    <td>@e.Category</td>
+                    <td>@e.Date.ToShortDateString()</td>
+                    <td>@e.Location</td>
+                    <td>
+                        <form method="post" asp-action="DeleteEvent" asp-route-id="@e.Id" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

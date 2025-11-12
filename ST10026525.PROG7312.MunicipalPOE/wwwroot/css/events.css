@@ -1,0 +1,157 @@
+﻿
+ /* GLOBAL SITE BACKGROUND */
+.site-bg {
+    background-image: url('/images/main1.jpg'); /* your JPEG image */
+    background-size: cover; /* cover full viewport */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 0;
+}
+
+/* Optional overlay for readability of text/content */
+    .site-bg::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 77, 37, 0.35);
+        z-index: -1;
+    }
+
+
+/* Outer wrapper: pushes content below navbar */
+.events-wrapper {
+    padding-top: 100px; 
+    padding-bottom: 30px;
+    min-height: calc(100vh - 140px); 
+}
+.events-heading {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 120px auto 50px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Page-wide styling */
+.events-page {
+    color: #fff;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+
+/* Inner section (cards, grids, etc.) */
+.events-section {
+    padding: 60px 20px; /* top/bottom + horizontal padding */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Green search/filter card */
+.events-filter {
+    background-color: rgba(0, 77, 37, 0.85); /* deep green with slight transparency */
+    border: 1px solid rgba(0, 77, 37, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+
+    /* Inputs inside filter card */
+    .events-filter input,
+    .events-filter select {
+        background-color: rgba(0, 100, 50, 0.6); /* slightly lighter green */
+        border: 1px solid #004d25;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: 500;
+    }
+
+        /* Placeholder text */
+        .events-filter input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Focus effect */
+        .events-filter input:focus,
+        .events-filter select:focus {
+            outline: none;
+            border-color: #ffd700; /* gold accent */
+            box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 100, 50, 0.8); /* darken slightly on focus */
+        }
+
+
+
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Individual event card */
+.event-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 77, 37, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    color: #004020;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Headings and text inside cards */
+    .event-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: #004d25;
+    }
+
+    .event-card p {
+        margin: 5px 0;
+        color: #004020
+    }
+
+    .event-card .badge {
+        background-color: #004d25;
+        color: #000;
+        font-weight: 600;
+        padding: 6px 10px;
+        border-radius: 8px;
+    }
+
+/* =============================
+   RESPONSIVE DESIGN
+   ============================= */
+
+@media (max-width: 768px) {
+    .filter-card .row > div {
+        margin-bottom: 10px;
+    }
+
+    .event-card {
+        text-align: center;
+    }
+
+    .events-wrapper {
+        padding-top: 100px; /* less padding for mobile */
+    }
+}

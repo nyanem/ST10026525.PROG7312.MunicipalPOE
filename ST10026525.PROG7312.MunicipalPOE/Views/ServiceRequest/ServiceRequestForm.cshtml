@@ -1,0 +1,50 @@
+﻿@model ST10026525.PROG7312.MunicipalPOE.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Submit Service Request";
+}
+
+<div class="container form-page-container">
+    <h2 class="text-center mb-4">Submit a Service Request</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Success"]
+        </div>
+    }
+
+    <form asp-action="ServiceRequestForm" asp-controller="ServiceRequest" method="post" class="form-card">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label fw-bold">Title</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label fw-bold"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label fw-bold"></label>
+            <input asp-for="Category" class="form-control" />
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label fw-bold"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit Request</button>
+        <a asp-action="ViewRequests" class="btn btn-secondary w-100 mt-2">View All Requests</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Local Events & Announcements";
+    ViewData["BodyClass"] = "events-page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/events.css" />
+}
+
+<div class="events-wrapper py-5">
+    <div class="container">
+        <h1 class="events-heading text-center text-white mb-4">Local Events & Announcements</h1>
+
+        <!-- Filter/Search Card -->
+        <div class="events-filter card p-4 mb-5">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input id="q" class="form-control" placeholder="Search by keyword..." />
+                </div>
+                <div class="col-md-3">
+                    <select id="category" class="form-select">
+                        <option value="">All categories</option>
+                        @foreach (var c in (IEnumerable<string>)ViewBag.Categories)
+                        {
+                            <option value="@c">@c</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input id="from" type="date" class="form-control" />
+                </div>
+                <div class="col-md-2">
+                    <input id="to" type="date" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <select id="sortBy" class="form-select">
+                        <option value="date">Date ↑</option>
+                        <option value="date_desc">Date ↓</option>
+                        <option value="name">Name</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="text-end mb-3">
+            <a href="@Url.Action("Dashboard", "Events")" class="btn btn-warning">
+                Manage Events & Announcements
+            </a>
+        </div>
+        <div id="eventsGrid" class="events-section events-grid">
+            <!-- Cards populated by JS -->
+        </div>
+
+    </div>
+    @if (ViewBag.Recommended != null && ViewBag.Recommended.Count > 0)
+    {
+        <h3 class="text-white mt-4">Recommended for you:</h3>
+        <div class="events-grid mb-4">
+            @foreach (var ev in ViewBag.Recommended)
+            {
+                <div class="event-card">
+                    <h4>@ev.Title</h4>
+                    <p class="text-muted">@ev.Date.ToShortDateString()</p>
+                    <p>@ev.Location</p>
+                    <p>@ev.Description</p>
+                    <span class="badge bg-secondary">@ev.Category</span>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        async function loadEvents() {
+            const q = document.getElementById('q').value;
+            const category = document.getElementById('category').value;
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const sortBy = document.getElementById('sortBy').value;
+
+            const params = new URLSearchParams({ q, category, sortBy });
+            if (from) params.set('from', from);
+            if (to) params.set('to', to);
+
+            const res = await fetch('@Url.Action("Search", "Events")?' + params.toString());
+            const data = await res.json();
+
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = '';
+            if (!Array.isArray(data) || data.length === 0) {
+                grid.innerHTML = '<div class="text-white text-center">No events found.</div>';
+                return;
+            }
+
+            data.forEach(e => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.innerHTML = `
+                    <h3>${e.title}</h3>
+                    <p class="text-muted">${new Date(e.date).toLocaleDateString()}</p>
+                    <p>${e.location}</p>
+                    <p>${e.description}</p>
+                    <span class="badge bg-secondary">${e.category}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        ['q', 'category', 'from', 'to', 'sortBy'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('input', loadEvents);
+            el.addEventListener('change', loadEvents);
+        });
+
+        loadEvents();
+    </script>
+}

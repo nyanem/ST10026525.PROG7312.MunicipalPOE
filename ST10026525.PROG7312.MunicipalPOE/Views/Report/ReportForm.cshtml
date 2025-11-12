@@ -1,0 +1,104 @@
+﻿@model ST10026525.PROG7312.MunicipalPOE.Models.Report
+@{
+    ViewData["Title"] = "Report an Issue";
+    ViewData["BodyClass"] = "form-page";
+}
+
+<div class="container form-page-container">
+    <h2 class="text-center mb-4">Report an Issue or Request a Service</h2>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+
+    <form asp-action="ReportForm" enctype="multipart/form-data" method="post" class="form-card">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label asp-for="Location"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category"></label>
+            <select asp-for="Category" class="form-select" asp-items="@(new SelectList(ViewBag.Categories))">
+                <option value="">-- Select Category --</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label fw-bold"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MediaFileName" class="form-label fw-bold"></label>
+            <input asp-for="MediaFileName" type="file" class="form-control" />
+        </div>
+
+        <!-- Progress bar -->
+        <div class="mb-3">
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;">0%</div>
+            </div>
+            <small id="motivation" class="text-muted">Let's get started!</small>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit</button>
+        <a asp-action="ViewReports" class="btn btn-secondary w-100 mt-2">View Reports</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fields = [
+                { sel: 'input[name="Location"]', isFile: false },
+                { sel: 'select[name="Category"]', isFile: false },
+                { sel: 'textarea[name="Description"]', isFile: false },
+                { sel: 'input[name="MediaFileName"]', isFile: true }
+            ];
+
+            const progressBar = document.getElementById('progressBar');
+            const motivation = document.getElementById('motivation');
+
+            function isFilled(el, isFile) {
+                if (!el) return false;
+                if (isFile) return el.files && el.files.length > 0;
+                return (el.value || '').trim() !== '';
+            }
+
+            function updateProgress() {
+                let filled = 0;
+                fields.forEach(f => {
+                    const el = document.querySelector(f.sel);
+                    if (isFilled(el, f.isFile)) filled++;
+                });
+                const percent = Math.round((filled / fields.length) * 100);
+                progressBar.style.width = percent + '%';
+                progressBar.innerText = percent + '%';
+                progressBar.setAttribute('aria-valuenow', percent);
+
+                if (percent === 0) motivation.innerText = "Let's get started!";
+                else if (percent < 50) motivation.innerText = "Great start, keep going!";
+                else if (percent < 100) motivation.innerText = "Almost there!";
+                else motivation.innerText = "Ready to submit!";
+            }
+
+            fields.forEach(f => {
+                const el = document.querySelector(f.sel);
+                if (!el) return;
+                el.addEventListener('input', updateProgress);
+                el.addEventListener('change', updateProgress);
+            });
+
+            updateProgress();
+        });
+    </script>
+}
+

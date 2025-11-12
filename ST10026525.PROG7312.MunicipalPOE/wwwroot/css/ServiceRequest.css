@@ -1,0 +1,33 @@
+﻿.container {
+    margin-top: 80px; /* pushes below navbar */
+}
+
+form.row {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.service-request-wrapper {
+    background-color: #f8f9fa; /* light gray background for page */
+    min-height: 100vh;
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-card {
+    background-color: #ffffff; /* white card */
+    color: #000000; /* black text */
+    border: 1px solid #dee2e6;
+}
+
+    .request-card h4 {
+        margin-bottom: 0.5rem;
+    }
+
+    .request-card p {
+        margin-bottom: 0.25rem;
+    }

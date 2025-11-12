@@ -1,0 +1,72 @@
+﻿/* Admin pages wrapper to push content below fixed navbar */
+.admin-wrapper {
+    padding-top: 100px;
+    padding-bottom: 30px;
+    min-height: calc(100vh - 140px);
+    color: #fff;
+}
+
+/* Center login form */
+.admin-login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05); /* light transparent background */
+    padding: 30px;
+    border-radius: 12px;
+    color: #fff;
+    backdrop-filter: blur(6px);
+}
+
+    /* Buttons styling */
+    .admin-login-form button {
+        background-color: #28a745;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+
+        .admin-login-form button:hover {
+            background-color: #218838;
+        }
+
+/* Dashboard wrapper */
+.admin-dashboard-wrapper {
+    padding-top: 100px; /* push content below navbar */
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+}
+    .admin-dashboard-wrapper table {
+        background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+        color: #fff; /* white text */
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        /* Table headers */
+        .admin-dashboard-wrapper table thead th {
+            background: rgba(0, 0, 0, 0.8); /* slightly darker header */
+            color: #fff;
+        }
+
+        /* Table body rows */
+        .admin-dashboard-wrapper table tbody tr {
+            background: rgba(0, 0, 0, 0.5); /* slightly lighter than header */
+            color: #fff;
+        }
+
+            /* Table striped rows */
+            .admin-dashboard-wrapper table tbody tr:nth-child(even) {
+                background: rgba(0, 0, 0, 0.4);
+            }
+
+.table-solid {
+    background-color: rgba(0, 0, 0, 0.7); /* solid dark background */
+    color: #fff; /* white text */
+}
+
+    .table-solid th,
+    .table-solid td {
+        border-color: rgba(255, 255, 255, 0.2); /* subtle borders */
+        color: #fff;
+    }

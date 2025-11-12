@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container page-container">
+    <h2 class="page-title">Contact Us</h2>
+    <p class="lead">We’d love to hear from you! Please reach out using the details below:</p>
+
+    <ul class="contact-list">
+        <li><strong>Email:</strong> support@municipality.gov</li>
+        <li><strong>Phone:</strong> +27 12 656 7409</li>
+        <li><strong>Address:</strong> 123 Government Avenue, Pretoria, South Africa</li>
+    </ul>
+
+    <form class="contact-form">
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" id="email" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Send Message</button>
+    </form>
+</div>
+
