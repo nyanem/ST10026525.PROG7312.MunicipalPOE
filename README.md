@@ -1,5 +1,7 @@
 # Municipal Application 
 <img width="1452" height="756" alt="Screenshot 2025-09-10 at 03 34 06" src="https://github.com/user-attachments/assets/6c8c5901-d286-4a2f-8b0a-ce00eedb19b8" />
+
+
 ## Project Overview
 
 The Municipal Application is a web-based system designed to manage local municipal services, announcements, events, reports, and service requests.
